@@ -5,17 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_Three_GUI"
         mc:Ignorable="d"
-        Title="HousingApp - Title" Height="450" Width="800" Background="Black" BorderBrush="Gray" BorderThickness="3">
+        Title="HousingApp - Title" Height="450" Width="800" Background="Black" BorderBrush="#ffac182e" BorderThickness="3">
     <Grid>
-        <Rectangle Fill="#696969" HorizontalAlignment="Left" Height="158" Margin="192,232,0,0" Stroke="Black" VerticalAlignment="Top" Width="429"/>
-        <Button Content="Login" FontSize="20" HorizontalAlignment="Left" Margin="335,347,0,0" VerticalAlignment="Top" Width="138" Height="31" Background="DarkRed" Foreground="White"/>
-        <Image HorizontalAlignment="Left" Height="133" Margin="192,79,0,0" VerticalAlignment="Top" Width="429" Source="image.png"/>
-        <TextBox BorderThickness="0" HorizontalAlignment="Left" Height="46" Margin="310,181,0,0" TextWrapping="Wrap" Text="Housing Application" VerticalAlignment="Top" Width="232" FontSize="25" Foreground="DarkGray" Background="" />
+        <Image HorizontalAlignment="Left" Height="388" Margin="0,37,0,-10.6" VerticalAlignment="Top" Width="787" Source="Background.jpg"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="181" Margin="84,46,0,0" Stroke="Black" VerticalAlignment="Top" Width="631" Opacity=".5"/>
+        <Rectangle Fill="#ffac182e" HorizontalAlignment="Left" Height="158" Margin="192,232,0,0" Stroke="Black" VerticalAlignment="Top" Width="429" Opacity=".6"/>
+        <Button Content="Login" FontSize="20" HorizontalAlignment="Left" Margin="335,347,0,0" VerticalAlignment="Top" Width="138" Height="31" Background="Black" Foreground="White" Click="ButtonBase_OnClick"/>
+        <Image HorizontalAlignment="Left" Height="169" Margin="138,37,0,0" VerticalAlignment="Top" Width="532" Source="image.png"/>
+        <Label BorderThickness="0" HorizontalAlignment="Left" Height="46" Margin="288,186,0,0" Content="Housing Application" VerticalAlignment="Top" Width="257" FontSize="25" Foreground="LightGray"/>
         <Label Content="Username :" HorizontalAlignment="Left" Margin="213,251,0,0" VerticalAlignment="Top" Foreground="White" Height="40" Width="117" FontSize="20"/>
-        <TextBox BorderThickness="2" BorderBrush="DarkRed" Background="Black" Foreground="White" FontSize="20" HorizontalAlignment="Left" Height="28" Margin="335,254,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="138" Text="house"/>
-        <TextBox BorderThickness="2" BorderBrush="DarkRed" Background="Black" Foreground="White" FontSize="20" HorizontalAlignment="Left" Height="28" Margin="335,287,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="138" Text="1234"/>
+        <TextBox BorderThickness="2" BorderBrush="#ffac182e" Background="Black" Foreground="White" FontSize="20" HorizontalAlignment="Left" Height="28" Margin="335,254,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="138" Text="house"/>
+        <TextBox BorderThickness="2" BorderBrush="#ffac182e" Background="Black" Foreground="White" FontSize="20" HorizontalAlignment="Left" Height="28" Margin="335,287,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="138" Text="1234"/>
         <Label Content="Password  :" HorizontalAlignment="Left" Margin="213,284,0,0" VerticalAlignment="Top" Foreground="White" Height="40" Width="117" FontSize="20"/>
-        <Label Content="Username or password was incorrect!" Foreground="DarkRed" FontSize="14" HorizontalAlignment="Left" Margin="288,315,0,0" VerticalAlignment="Top" Height="40" Width="254"/>
+        <Label Content="Username or password was incorrect!" Foreground="Black" FontSize="15" HorizontalAlignment="Left" Margin="288,315,0,0" VerticalAlignment="Top" Height="40" Width="273" Visibility="Hidden"/>
+        <Rectangle Fill="#ffac182e" HorizontalAlignment="Left" Height="63" Stroke="Black" VerticalAlignment="Top" Width="836" Margin="-22,-22,-26.8,0"/>
+        <Image HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="38" Source="Icon.jpg" RenderTransformOrigin="0.184,0.346"/>
 
     </Grid>
 </Window>

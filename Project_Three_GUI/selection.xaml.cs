@@ -16,19 +16,18 @@ using System.Windows.Shapes;
 namespace Project_Three_GUI
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for selection.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class selection : Page
     {
-        public MainWindow()
+        public selection()
         {
             InitializeComponent();
         }
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            newResident page = new newResident();
-            this.NavigationService.Navigate(page);
+        
         }
     }
 }

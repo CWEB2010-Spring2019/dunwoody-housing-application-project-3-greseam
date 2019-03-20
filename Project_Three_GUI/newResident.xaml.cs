@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace Project_Three_GUI
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for newResident.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class newResident : Page
     {
-        public MainWindow()
+        public newResident()
         {
             InitializeComponent();
-        }
-
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            newResident page = new newResident();
-            this.NavigationService.Navigate(page);
         }
     }
 }
