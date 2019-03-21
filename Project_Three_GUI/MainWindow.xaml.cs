@@ -25,10 +25,6 @@ namespace Project_Three_GUI
             InitializeComponent();
         }
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            newResident page = new newResident();
-            this.NavigationService.Navigate(page);
-        }
+
     }
 }

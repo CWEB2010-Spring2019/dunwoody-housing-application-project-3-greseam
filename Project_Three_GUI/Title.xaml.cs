@@ -16,20 +16,25 @@ using System.Windows.Shapes;
 namespace Project_Three_GUI
 {
     /// <summary>
-    /// Interaction logic for newResident.xaml
+    /// Interaction logic for Title.xaml
     /// </summary>
-    public partial class newResident : Page
+    public partial class Title : Page
     {
-        public newResident()
+        public Title()
         {
             InitializeComponent();
         }
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-
-                frame2.Content = new selection();
-            
+            if (userNameBox.Text == "Home" && userPassBox.Text == "1234")
+            {
+                newResident page3 = new newResident();
+                frame.Navigate(page3);
+            }
+            else
+            {
+                userCheck.Visibility = Visibility.Visible;
+            }
         }
-
     }
 }

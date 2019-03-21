@@ -25,19 +25,19 @@
 
         <Image HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="38" Source="Icon.jpg" RenderTransformOrigin="0.184,0.346"/>
         <Image HorizontalAlignment="Left" Height="62" Margin="450,46,0,0" VerticalAlignment="Top" Width="252" Source="image.png"/>
-        <TextBox FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="149,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" TextChanged="TextBox_TextChanged"/>
+        <TextBox Name="StudentName" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="149,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" TextChanged="TextBox_TextChanged"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="64,187,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
         <Label Content="ID #" HorizontalAlignment="Left" Margin="414,187,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
-        <TextBox FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="484,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178"/>
-        <Label Content="Type :" HorizontalAlignment="Left" Margin="64,244,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
-        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="174,250,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
-        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="484,250,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
-        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="322,250,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
+        <TextBox Name="IDnum" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="484,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178"/>
+        <Label Content="Student :" HorizontalAlignment="Left" Margin="64,244,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
+        <CheckBox Name="ScholarshipBox" Content="Scholarship" HorizontalAlignment="Left" Margin="174,250,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
+        <CheckBox Name="AthleteBox" Content="Athlete" HorizontalAlignment="Left" Margin="484,250,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
+        <CheckBox Name="WorkerBox" Content="Worker" HorizontalAlignment="Left" Margin="322,250,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
         <Label Content="Floor:" HorizontalAlignment="Left" Margin="64,305,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
         <ListBox HorizontalAlignment="Left" Height="27" Margin="149,310,0,0" VerticalAlignment="Top" Width="93"/>
-        <Button Content="Enter" FontSize="20" HorizontalAlignment="Left" Margin="339,355,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" Click="ButtonBase_OnClick"/>
-        <Button Content="Back" FontSize="20" HorizontalAlignment="Left" Margin="542,355,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" Click="ButtonBase_OnClick"/>
+        <Button Click="ButtonBase_Enter" Content="Enter" FontSize="20" HorizontalAlignment="Left" Margin="339,355,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" />
+        <Button Click="ButtonBase_OnClick" Content="Back" FontSize="20" HorizontalAlignment="Left" Margin="542,355,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" />
         <Label Content="NEW RESIDENT" HorizontalAlignment="Left" Margin="64,59,0,0" VerticalAlignment="Top" Foreground="#ffac182e" FontSize="20" Width="156"/>
-
+<Frame Name="frame3"/>
     </Grid>
 </Page>

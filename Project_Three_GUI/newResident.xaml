@@ -21,18 +21,18 @@
         </Image>
         <Rectangle Fill="Black" HorizontalAlignment="Left" Height="62" Margin="41,46,0,0" Stroke="Black" VerticalAlignment="Top" Width="692" Opacity=".5"/>
         <Rectangle Fill="#ffac182e" HorizontalAlignment="Left" Height="274" Margin="26,130,0,0" Stroke="Black" VerticalAlignment="Top" Width="728" Opacity=".6"/>
-        <Button Content="Floor" FontSize="20" HorizontalAlignment="Left" Margin="173,130,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" Click="ButtonBase_OnClick"/>
+        <Button Content="Floor" FontSize="20" HorizontalAlignment="Left" Margin="173,130,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" />
         <Rectangle Fill="#ffac182e" HorizontalAlignment="Left" Height="63" Stroke="Black" VerticalAlignment="Top" Width="836" Margin="-22,-22,-26.8,0"/>
-        <Button Content="Name" FontSize="20" HorizontalAlignment="Left" Margin="392,130,0,0" VerticalAlignment="Top" Width="92" Height="31" Background="Black" Foreground="White" Click="ButtonBase_OnClick"/>
-        <Button Content="Type" FontSize="20" HorizontalAlignment="Left" Margin="282,130,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" Click="ButtonBase_OnClick"/>
+        <Button Content="Name" FontSize="20" HorizontalAlignment="Left" Margin="392,130,0,0" VerticalAlignment="Top" Width="92" Height="31" Background="Black" Foreground="White" />
+        <Button Content="Type" FontSize="20" HorizontalAlignment="Left" Margin="282,130,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" />
 
         <Image HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="38" Source="Icon.jpg" RenderTransformOrigin="0.184,0.346"/>
         <DataGrid HorizontalAlignment="Left" Height="224" Margin="41,166,0,0" VerticalAlignment="Top" Width="692" Background="WhiteSmoke"/>
-        <Button Content="ID" FontSize="20" HorizontalAlignment="Left" Margin="64,130,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" Click="ButtonBase_OnClick"/>
+        <Button Content="ID" FontSize="20" HorizontalAlignment="Left" Margin="64,130,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" />
         <Image HorizontalAlignment="Left" Height="62" Margin="450,46,0,0" VerticalAlignment="Top" Width="252" Source="image.png"/>
-        <Button Content="New Resident" FontSize="20" HorizontalAlignment="Left" Margin="64,61,0,0" VerticalAlignment="Top" Width="165" Height="29" Background="#ffac182e" Foreground="PapayaWhip" Click="ButtonBase_OnClick"/>
+        <Button Click="ButtonBase_OnClick" Content="New Resident" FontSize="20" HorizontalAlignment="Left" Margin="64,61,0,0" VerticalAlignment="Top" Width="165" Height="29" Background="#ffac182e" Foreground="PapayaWhip"/>
         <Image Source="search-icon.png" HorizontalAlignment="Left" Height="24" Margin="529,134,0,0" VerticalAlignment="Top" Width="26" RenderTransformOrigin="0.496,0.537"/>
         <TextBox FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="555,131,0,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="178"/>
-
+        <Frame Name="frame2"/>
     </Grid>
 </Page>
