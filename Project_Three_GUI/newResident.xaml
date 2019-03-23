@@ -27,12 +27,19 @@
         <Button Content="Type" FontSize="20" HorizontalAlignment="Left" Margin="282,130,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" />
 
         <Image HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="38" Source="Icon.jpg" RenderTransformOrigin="0.184,0.346"/>
-        <DataGrid HorizontalAlignment="Left" Height="224" Margin="41,166,0,0" VerticalAlignment="Top" Width="692" Background="WhiteSmoke"/>
+        <DataGrid  Name="HousingGrid" HorizontalAlignment="Left" Height="224" Margin="41,166,0,0" VerticalAlignment="Top" Width="514" Background="WhiteSmoke" FontSize="17"/>
         <Button Content="ID" FontSize="20" HorizontalAlignment="Left" Margin="64,130,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" />
         <Image HorizontalAlignment="Left" Height="62" Margin="450,46,0,0" VerticalAlignment="Top" Width="252" Source="image.png"/>
         <Button Click="ButtonBase_OnClick" Content="New Resident" FontSize="20" HorizontalAlignment="Left" Margin="64,61,0,0" VerticalAlignment="Top" Width="165" Height="29" Background="#ffac182e" Foreground="PapayaWhip"/>
         <Image Source="search-icon.png" HorizontalAlignment="Left" Height="24" Margin="529,134,0,0" VerticalAlignment="Top" Width="26" RenderTransformOrigin="0.496,0.537"/>
-        <TextBox FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="555,131,0,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="178"/>
+        <TextBox FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="555,131,0,0" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Top" Width="178"/>
+        <Label Foreground="WhiteSmoke" FontSize="14" Content="Number of Student Workers" HorizontalAlignment="Left" Margin="555,185,0,0" VerticalAlignment="Top"/>
+        <Label Foreground="WhiteSmoke"  FontSize="14" Content="Number of Student  Atheletes" HorizontalAlignment="Left" Margin="555,305,0,0" VerticalAlignment="Top"/>
+        <Label Foreground="WhiteSmoke"  FontSize="14" Content="Number of Scholarships" HorizontalAlignment="Left" Margin="555,240,0,0" VerticalAlignment="Top"/>
+        <Label Name="NumOfWorkers" Foreground="WhiteSmoke" Content="0" HorizontalAlignment="Left" Margin="588,214,0,0" VerticalAlignment="Top" Width="116"/>
+        <Label Name="NumOfAtheletes" Foreground="WhiteSmoke"  Content="0" HorizontalAlignment="Left" Margin="586,339,0,0" VerticalAlignment="Top" Width="116"/>
+        <Label Name="NumOfScholarships" Foreground="WhiteSmoke"  Content="0" HorizontalAlignment="Left" Margin="586,274,0,0" VerticalAlignment="Top" Width="116"/>
         <Frame Name="frame2"/>
+
     </Grid>
 </Page>
