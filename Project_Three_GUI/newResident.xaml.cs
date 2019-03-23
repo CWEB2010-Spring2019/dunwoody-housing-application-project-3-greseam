@@ -55,14 +55,15 @@ namespace Project_Three_GUI
 
         private List<Residents> LoadCollectionData()
         {
+            string FilePath = @"AddedResident.json";
             List<Residents> addedResidentsList = new List<Residents>();
             addedResidentsList =
-                JsonConvert.DeserializeObject<List<Residents>>(File.ReadAllText(@"C:\Users\greseam\Documents\Visual Studio 2017\Projects\Adv. Programming\Project_003\Project_Three_GUI\bin\Debug\AddedResident.json"));
+                JsonConvert.DeserializeObject<List<Residents>>(File.ReadAllText(FilePath));
             List<Residents> ResidentsDataList = new List<Residents>();
             ResidentsDataList.Add(new Residents()
             {
                 ID = 001,
-                Name = "Linda Gregor",
+                Name = "Larry L.",
                 StudentType = "Athlete",
                 FloorNum = 4,
                 RoomNum = 2,
@@ -88,8 +89,7 @@ namespace Project_Three_GUI
                 RoomNum = 4,
                 Rent = 1245 - ((14*(20 * 3))/2),
             });
-            try
-            {
+            
            
                 for (int i = 0; i < addedResidentsList.Count; i++)
                 {
@@ -103,12 +103,7 @@ namespace Project_Three_GUI
                         Rent = addedResidentsList[i].Rent,
                     });
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            
         
 
             return ResidentsDataList;

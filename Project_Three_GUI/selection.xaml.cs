@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,80 +40,87 @@ namespace Project_Three_GUI
             frame3.Content = new newResident();
         }
         newResident page3 = new newResident();
+        JArray canContainer = new JArray();
         private void ButtonBase_Enter(object sender, RoutedEventArgs e)
         {
 
             if (StudentFirstName.ToString().Length >= 1 && StudentSurName.ToString().Length >= 1 && IDnum.ToString().Length >= 1 && (ScholarshipBox.IsChecked == true ^ AthleteBox.IsChecked == true ^ WorkerBox.IsChecked == true))
             {
+       
+            string FilePath = @"AddedResident.json";
+            int Rent = 0;
+            string type = "";
+            int ID = Convert.ToInt16(IDnum.Text);
+            string fullName = StudentFirstName.Text.ToString() + " " + StudentSurName.Text.ToString();
+            try
+            {
+                int hours = Convert.ToInt32(Hourly.Text);
+                int workingWage = 14 * hours;
+                if (WorkerBox.IsChecked == true)
+                {
+                    Rent = 1245 - (workingWage / 2);
+                    type = "WorkStudent";
+                }
+            }
+            catch (Exception exception)
+            {
+               
+            }
+            Residents addResidents = new Residents();
+            if (ScholarshipBox.IsChecked == true)
+            {
+                Rent = 100;
+                type = "Scholarship";
+            }
+            else if (AthleteBox.IsChecked == true)
+            {
+                Rent = 1200;
+                type = "Athlete";
+            }
+            else 
+            {
+                
+            }
+            
+            TextWriter tsw = new StreamWriter(FilePath, true);
+
+             JObject addJObject = new JObject(new JProperty("ID", ID),
+                new JProperty("Name", fullName),
+                new JProperty("StudentType", type),
+                new JProperty("FloorNum", 1),
+                new JProperty("RoomNum", 6),
+                new JProperty("Rent", Rent));
+            canContainer.Add(addJObject);
+           
+            //string newData = "";
+            //FileStream inputFileStream = new FileStream(FilePath, FileMode.Open, FileAccess.Read);
+            //StreamReader reader = new StreamReader(inputFileStream);
+            //newData = Convert.ToString(File.ReadAllText(FilePath)).Replace("][", ",");
+                //  File.AppendAllText(FilePath, addJObject.ToString());
+
+
+                using (JsonTextWriter writer = new JsonTextWriter(tsw))
+                {
+                    canContainer.WriteTo(writer);
+
+                    writer.Close();
+                    tsw.Close();
+                }
                 try
                 {
-                    int Rent = 0;
-                    string type = "";
-                    int ID = Convert.ToInt16(IDnum.Text);
-                    string fullName = StudentFirstName.Text.ToString() + " " + StudentSurName.Text.ToString();
-                    try
-                    {
-                        int hours = Convert.ToInt32(Hourly.Text);
-                        int workingWage = 14 * hours;
-                        if (WorkerBox.IsChecked == true)
-                        {
-                            Rent = 1245 - (workingWage / 2);
-                            type = "WorkStudent";
-                        }
-                    }
-                    catch (Exception exception)
-                    {
-                       
-                    }
-                    Residents addResidents = new Residents();
-                    if (ScholarshipBox.IsChecked == true)
-                    {
-                        Rent = 100;
-                        type = "Scholarship";
-                    }
-                    else if (AthleteBox.IsChecked == true)
-                    {
-                        Rent = 1200;
-                        type = "Athlete";
-                    }
-                    else 
-                    {
-                        
-                    }
+                    
 
-                    try
-                    {
-                        JArray addJObject = new JArray(
-                            new JProperty("ID", ID),
-                            new JProperty("Name", fullName),
-                            new JProperty("StudentType", type),
-                            new JProperty("FloorNum", 1),
-                            new JProperty("RoomNum", 6),
-                            new JProperty("Rent", Rent));
-
-                        File.WriteAllText(@"AddedResident.json", addJObject.ToString());
-
-                        // write JSON directly to a file
-                        using (StreamWriter file = File.CreateText(@"AddedResident.json"))
-                        using (JsonTextWriter writer = new JsonTextWriter(file))
-                        {
-                            addJObject.WriteTo(writer);
-                        }
-                    }
-                    catch (Exception exception)
-                    {
-                        Console.WriteLine(exception);
-                        throw;
-                    }
-                    //add Rent to JSON file
-                    //return StudentName, id, and type to Json to be saved
-                    frame3.Navigate(page3);
                 }
                 catch (Exception exception)
                 {
                     Console.WriteLine(exception);
                     throw;
                 }
+                //add Rent to JSON file
+                //return StudentName, id, and type to Json to be saved
+                frame3.Navigate(page3);
+        
+       
 
 
             }
