@@ -21,25 +21,33 @@
         </Image>
         <Rectangle Fill="Black" HorizontalAlignment="Left" Height="62" Margin="41,46,0,0" Stroke="Black" VerticalAlignment="Top" Width="692" Opacity=".5"/>
         <Rectangle Fill="#ffac182e" HorizontalAlignment="Left" Height="274" Margin="26,130,0,0" Stroke="Black" VerticalAlignment="Top" Width="728" Opacity=".6"/>
-        <Button Content="Floor" FontSize="20" HorizontalAlignment="Left" Margin="173,130,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" />
+        <Button Click="FloorSearch_OnClick" Name="FloorSearch" Content="Floor Search" FontSize="20" HorizontalAlignment="Left" Margin="365,130,0,0" VerticalAlignment="Top" Width="140" Height="31" Background="Black" Foreground="White" />
         <Rectangle Fill="#ffac182e" HorizontalAlignment="Left" Height="63" Stroke="Black" VerticalAlignment="Top" Width="836" Margin="-22,-22,-26.8,0"/>
-        <Button Content="Name" FontSize="20" HorizontalAlignment="Left" Margin="392,130,0,0" VerticalAlignment="Top" Width="92" Height="31" Background="Black" Foreground="White" />
-        <Button Content="Type" FontSize="20" HorizontalAlignment="Left" Margin="282,130,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" />
 
         <Image HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="38" Source="Icon.jpg" RenderTransformOrigin="0.184,0.346"/>
         <DataGrid  Name="HousingGrid" HorizontalAlignment="Left" Height="224" Margin="41,166,0,0" VerticalAlignment="Top" Width="514" Background="WhiteSmoke" FontSize="17"/>
-        <Button Content="ID" FontSize="20" HorizontalAlignment="Left" Margin="64,130,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" />
+        <Button Name="IDSearch" Click="IDSearch_OnClick" Content="ID Search" FontSize="20" HorizontalAlignment="Left" Margin="242,130,0,0" VerticalAlignment="Top" Width="118" Height="31" Background="Black" Foreground="White" />
         <Image HorizontalAlignment="Left" Height="62" Margin="450,46,0,0" VerticalAlignment="Top" Width="252" Source="image.png"/>
         <Button Click="ButtonBase_OnClick" Content="New Resident" FontSize="20" HorizontalAlignment="Left" Margin="64,61,0,0" VerticalAlignment="Top" Width="165" Height="29" Background="#ffac182e" Foreground="PapayaWhip"/>
         <Image Source="search-icon.png" HorizontalAlignment="Left" Height="24" Margin="529,134,0,0" VerticalAlignment="Top" Width="26" RenderTransformOrigin="0.496,0.537"/>
-        <TextBox FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="555,131,0,0" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Top" Width="178"/>
-        <Label Foreground="WhiteSmoke" FontSize="14" Content="Number of Student Workers" HorizontalAlignment="Left" Margin="555,185,0,0" VerticalAlignment="Top"/>
-        <Label Foreground="WhiteSmoke"  FontSize="14" Content="Number of Student  Atheletes" HorizontalAlignment="Left" Margin="555,305,0,0" VerticalAlignment="Top"/>
-        <Label Foreground="WhiteSmoke"  FontSize="14" Content="Number of Scholarships" HorizontalAlignment="Left" Margin="555,240,0,0" VerticalAlignment="Top"/>
-        <Label Name="NumOfWorkers" Foreground="WhiteSmoke" Content="0" HorizontalAlignment="Left" Margin="588,214,0,0" VerticalAlignment="Top" Width="116"/>
-        <Label Name="NumOfAtheletes" Foreground="WhiteSmoke"  Content="0" HorizontalAlignment="Left" Margin="586,339,0,0" VerticalAlignment="Top" Width="116"/>
-        <Label Name="NumOfScholarships" Foreground="WhiteSmoke"  Content="0" HorizontalAlignment="Left" Margin="586,274,0,0" VerticalAlignment="Top" Width="116"/>
-        <Frame Name="frame2"/>
+        <TextBox GotMouseCapture="SearchTextBox_OnGotMouseCapture"  Name="SearchTextBox" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="555,131,0,0" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Top" Width="178"/>
+        <Label Foreground="WhiteSmoke" FontSize="14" Content="Number of Student Workers" HorizontalAlignment="Left" Margin="555,166,0,0" VerticalAlignment="Top"/>
+        <Label Foreground="WhiteSmoke"  FontSize="14" Content="Number of Student  Atheletes" HorizontalAlignment="Left" Margin="555,275,0,0" VerticalAlignment="Top"/>
+        <Label Foreground="WhiteSmoke"  FontSize="14" Content="Number of Scholarships" HorizontalAlignment="Left" Margin="555,221,0,0" VerticalAlignment="Top"/>
+        <Label Name="NumOfWorkers" Foreground="WhiteSmoke" Content="0" HorizontalAlignment="Left" Margin="586,195,0,0" VerticalAlignment="Top" Width="34"/>
+        <Label Name="NumOfAtheletes" Foreground="WhiteSmoke"  Content="0" HorizontalAlignment="Left" Margin="586,304,0,0" VerticalAlignment="Top" Width="34"/>
+        <Label Name="NumOfScholarships" Foreground="WhiteSmoke"  Content="0" HorizontalAlignment="Left" Margin="586,250,0,0" VerticalAlignment="Top" Width="34"/>
+        <Label Foreground="WhiteSmoke"  FontSize="14" Content="Residents per Floor" HorizontalAlignment="Left" Margin="555,330,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NumOfResidentsFl1" Foreground="WhiteSmoke"  Content="FL1 : 0" HorizontalAlignment="Left" Margin="560,350,0,0" VerticalAlignment="Top" Width="46" RenderTransformOrigin="0.478,-0.758"/>
+        <Label x:Name="NumOfResidentsFl2" Foreground="WhiteSmoke"  Content="FL2 : 0" HorizontalAlignment="Left" Margin="611,350,0,0" VerticalAlignment="Top" Width="46"/>
+        <Label x:Name="NumOfResidentsFl3" Foreground="WhiteSmoke"  Content="FL3 : 0" HorizontalAlignment="Left" Margin="657,350,0,0" VerticalAlignment="Top" Width="46"/>
+        <Label x:Name="NumOfResidentsFl4" Foreground="WhiteSmoke"  Content="FL4 : 0" HorizontalAlignment="Left" Margin="703,350,0,0" VerticalAlignment="Top" Width="46"/>
+        <Label x:Name="NumOfResidentsFl5" Foreground="WhiteSmoke"  Content="FL5 : 0" HorizontalAlignment="Left" Margin="560,369,0,0" VerticalAlignment="Top" Width="46" RenderTransformOrigin="0.478,-0.758"/>
+        <Label x:Name="NumOfResidentsFl6" Foreground="WhiteSmoke"  Content="F6 : 0" HorizontalAlignment="Left" Margin="611,369,0,0" VerticalAlignment="Top" Width="46"/>
+        <Label x:Name="NumOfResidentsFl7" Foreground="WhiteSmoke"  Content="FL7 : 0" HorizontalAlignment="Left" Margin="657,369,0,0" VerticalAlignment="Top" Width="46"/>
+        <Label x:Name="NumOfResidentsFl8" Foreground="WhiteSmoke"  Content="FL8 : 0" HorizontalAlignment="Left" Margin="703,369,0,0" VerticalAlignment="Top" Width="46"/>
+        <Button x:Name="Search_Clear" Click="Search_Clear_OnClick" Content="Clear Search" FontSize="20" HorizontalAlignment="Left" Margin="81,130,0,0" VerticalAlignment="Top" Width="130" Height="31" Background="Black" Foreground="White" />
+        <Frame Name="frame2"  />
 
     </Grid>
 </Page>
