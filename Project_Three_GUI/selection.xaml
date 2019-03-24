@@ -25,10 +25,10 @@
 
         <Image HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="38" Source="Icon.jpg" RenderTransformOrigin="0.184,0.346"/>
         <Image HorizontalAlignment="Left" Height="62" Margin="450,46,0,0" VerticalAlignment="Top" Width="252" Source="image.png"/>
-        <TextBox Name="StudentSurName" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="179,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" TextChanged="TextBox_TextChanged"/>
+        <TextBox GotMouseCapture="StudentSurName_OnGotMouseCapture" Name="StudentSurName" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="179,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" TextChanged="TextBox_TextChanged"/>
         <Label Content="Surname :" HorizontalAlignment="Left" Margin="64,191,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
         <Label Content="ID #" HorizontalAlignment="Left" Margin="414,187,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
-        <TextBox Name="IDnum" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="484,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178"/>
+        <TextBox GotMouseCapture="IDnum_OnGotMouseCapture" Name="IDnum" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="484,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178"/>
         <Label Content="Student :" HorizontalAlignment="Left" Margin="64,244,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
         <CheckBox Checked="ScholarshipBox_OnChecked" Unchecked="ScholarshipBox_OnUnchecked" Name="ScholarshipBox" Content="Scholarship" HorizontalAlignment="Left" Margin="179,254,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
         <CheckBox Unchecked="AthleteBox_OnUnchecked" Checked="AthleteBox_OnChecked" Name="AthleteBox" Content="Athlete" HorizontalAlignment="Left" Margin="466,254,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
@@ -39,9 +39,9 @@
         <Button Click="ButtonBase_OnClick" Content="Back" FontSize="20" HorizontalAlignment="Left" Margin="542,355,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" />
         <Label Content="NEW RESIDENT" HorizontalAlignment="Left" Margin="64,59,0,0" VerticalAlignment="Top" Foreground="#ffac182e" FontSize="20" Width="156"/>
         <Label  Name="hourlyDescription" Content="Hours per week student will work :" HorizontalAlignment="Left" Margin="279,285,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20" Visibility="Hidden"/>
-        <TextBox x:Name="StudentFirstName" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="179,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" TextChanged="TextBox_TextChanged"/>
+        <TextBox GotMouseCapture="StudentFirstName_OnGotMouseCapture" Name="StudentFirstName" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="179,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" TextChanged="TextBox_TextChanged"/>
         <Label Content="First Name :" HorizontalAlignment="Left" Margin="64,154,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
-        <ComboBox Foreground="Black" Text="Floor" FontSize="20" Name="floorText" Margin="134,317,580,107.6" DropDownOpened="FloorText_OnDropDownOpened" DropDownClosed="FloorText_OnDropDownClosed"/>
+        <TextBox GotMouseCapture="FloorText_OnGotMouseCapture" Name="floorText" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="141,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
 
         <Frame Name="frame3" />
 

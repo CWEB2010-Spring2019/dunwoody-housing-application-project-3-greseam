@@ -146,8 +146,11 @@ namespace Project_Three_GUI
                 RoomNum = 1,
                 Rent = 1245 - ((14*(20 * 3))/2),
             });
+
+            try
+            {
+
             
-           
                 for (int i = 0; i < addedResidentsList.Count; i++)
                 {
                     ResidentsDataList.Add(new Residents()
@@ -160,8 +163,12 @@ namespace Project_Three_GUI
                         Rent = addedResidentsList[i].Rent,
                     });
                 }
-            
-        
+            }
+            catch 
+            {
+               
+            }
+
 
             return ResidentsDataList;
         }

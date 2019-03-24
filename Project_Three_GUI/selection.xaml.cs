@@ -20,9 +20,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Project_Three_GUI
 {
-    /// <summary>
-    /// Interaction logic for selection.xaml
-    /// </summary>
+   
     public partial class selection : Page
     {
         public selection()
@@ -40,9 +38,9 @@ namespace Project_Three_GUI
             frame3.Content = new newResident();
         }
 
+        private bool invalidData = false;
         newResident page3 = new newResident();
         JArray canContainer = new JArray();
-        private int selectedData = 0;
         private int floorVal = 0;
         string[,] Floors =
         {
@@ -54,10 +52,11 @@ namespace Project_Three_GUI
         private void ButtonBase_Enter(object sender, RoutedEventArgs e)
         {
 
-            if (StudentFirstName.ToString().Length >= 1 && StudentSurName.ToString().Length >= 1 &&
+            if (StudentFirstName.ToString().Length >= 1 && StudentSurName.ToString().Length >= 1 && floorText.Text.Length == 1 &&
                 IDnum.ToString().Length >= 1 && (ScholarshipBox.IsChecked == true ^ AthleteBox.IsChecked == true ^
-                                                 WorkerBox.IsChecked == true))
+                                                 WorkerBox.IsChecked == true ))
             {
+                invalidData = false;
 
                 if (ScholarshipBox.IsChecked == true)
                 {
@@ -68,10 +67,11 @@ namespace Project_Three_GUI
                     }
                     else
                     {
-
+                        floorText.Text = "Invalid Floor";
+                        invalidData = true;
                     }
                 }
-                if (WorkerBox.IsChecked == true)
+                else if (WorkerBox.IsChecked == true)
                 {
                     if (floorText.Text.ToString() == Floors[0, 0] || floorText.Text.ToString() == Floors[0, 1] || floorText.Text.ToString() == Floors[0, 2])
                     {
@@ -81,10 +81,11 @@ namespace Project_Three_GUI
                     }
                     else
                     {
-
+                        floorText.Text = "Invalid Floor";
+                        invalidData = true;
                     }
                 }
-                if (WorkerBox.IsChecked == true)
+                else if (AthleteBox.IsChecked == true)
                 {
                     if (floorText.Text.ToString() == Floors[1, 0] || floorText.Text.ToString() == Floors[1, 1] || floorText.Text.ToString() == Floors[1, 2])
                     {
@@ -94,14 +95,22 @@ namespace Project_Three_GUI
                     }
                     else
                     {
-
+                        floorText.Text = "Invalid Floor";
+                        invalidData = true;
                     }
+                }
+                else
+                {
+                    floorText.Text = "Invalid Floor";
+                    invalidData = true;
                 }
                 string FilePath = @"AddedResident.json";
                 int Rent = 0;
                 string type = "";
                 int ID = Convert.ToInt16(IDnum.Text);
+                
                 string fullName = StudentFirstName.Text.ToString() + " " + StudentSurName.Text.ToString();
+                
                 try
                 {
                     int hours = Convert.ToInt32(Hourly.Text);
@@ -112,7 +121,7 @@ namespace Project_Three_GUI
                         type = "WorkStudent";
                     }
                 }
-                catch (Exception exception)
+                catch 
                 {
 
                 }
@@ -132,48 +141,46 @@ namespace Project_Three_GUI
                 {
 
                 }
-
-                TextWriter tsw = new StreamWriter(FilePath, true);
-               
-                JObject addJObject = new JObject(new JProperty("ID", ID),
-                    new JProperty("Name", fullName),
-                    new JProperty("StudentType", type),
-                    new JProperty("FloorNum", 1),
-                    new JProperty("RoomNum", roomNumVal),
-                    new JProperty("Rent", Rent));
-
-
-                canContainer.Add(addJObject);
-
-                //string newData = "";
-                //FileStream inputFileStream = new FileStream(FilePath, FileMode.Open, FileAccess.Read);
-                //StreamReader reader = new StreamReader(inputFileStream);
-                //newData = Convert.ToString(File.ReadAllText(FilePath)).Replace("][", ",");
-                //  File.AppendAllText(FilePath, addJObject.ToString());
-
-
-                using (JsonTextWriter writer = new JsonTextWriter(tsw))
+                if (invalidData == false)
                 {
-                    canContainer.WriteTo(writer);
+                        TextWriter tsw = new StreamWriter(FilePath, true);
+                   
+                    JObject addJObject = new JObject(
+                        new JProperty("ID", ID),
+                        new JProperty("Name", fullName),
+                        new JProperty("StudentType", type),
+                        new JProperty("FloorNum", floorVal),
+                        new JProperty("RoomNum", roomNumVal),
+                        new JProperty("Rent", Rent));
 
-                    writer.Close();
-                    tsw.Close();
+
+                    canContainer.Add(addJObject);
+
+
+                    using (JsonTextWriter writer = new JsonTextWriter(tsw))
+                    {
+                        canContainer.WriteTo(writer);
+
+                        writer.Close();
+                        tsw.Close();
+                    }
+
+                    try
+                    {
+
+
+                    }
+                    catch (Exception exception)
+                    {
+                        Console.WriteLine(exception);
+                        throw;
+                    }
+
+                    //add Rent to JSON file
+                    //return StudentName, id, and type to Json to be saved
+                    
+                        frame3.Content = new newResident();
                 }
-
-                try
-                {
-
-
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception);
-                    throw;
-                }
-
-                //add Rent to JSON file
-                //return StudentName, id, and type to Json to be saved
-                frame3.Content = new newResident();
 
 
 
@@ -231,21 +238,25 @@ namespace Project_Three_GUI
             hourlyDescription.Visibility = Visibility.Hidden;
         }
 
-        private void UIElement_OnDrop(object sender, DragEventArgs e)
-        {
 
+        private void FloorText_OnGotMouseCapture(object sender, MouseEventArgs e)
+        {
+            floorText.Text = "";
         }
 
-
-        private void FloorText_OnDropDownOpened(object sender, EventArgs e)
+        private void IDnum_OnGotMouseCapture(object sender, MouseEventArgs e)
         {
-            floorText.Text = Floors[0,1];
-            selectedData = Convert.ToInt32(floorText.Text);
+            IDnum.Text = "";
         }
 
-        private void FloorText_OnDropDownClosed(object sender, EventArgs e)
+        private void StudentFirstName_OnGotMouseCapture(object sender, MouseEventArgs e)
         {
-            floorText.Text = selectedData.ToString();
+            StudentFirstName.Text = "";
+        }
+
+        private void StudentSurName_OnGotMouseCapture(object sender, MouseEventArgs e)
+        {
+            StudentSurName.Text = "";
         }
     }
 }
