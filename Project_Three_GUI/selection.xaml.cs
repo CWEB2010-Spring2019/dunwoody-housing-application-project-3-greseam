@@ -69,6 +69,11 @@ namespace Project_Three_GUI
                 {
 
                     ID = Convert.ToInt16(IDnum.Text);
+                    if (ID.ToString().Length > 3)
+                    {
+                        IDnum.Text = "ID is too long";
+                        invalidData = true;
+                    }
                     for (int i = 0; i < addedResidentsList.Count; i++)
                     {
                         IDCheckVar++;
@@ -77,7 +82,6 @@ namespace Project_Three_GUI
                             IDnum.Text = "ID in use";
                             invalidData = true;
                         }
-
                     }
                 }
                 catch
@@ -86,11 +90,12 @@ namespace Project_Three_GUI
                     invalidData = true;
                 }
 
-                if (ScholarshipBox.IsChecked == true)
+                if (ScholarshipBox.IsChecked == true )
                 {
-                    if (floorText.Text.ToString() == Floors[2,0] ^ floorText.Text.ToString() == Floors[2,1])
+                    if (floorText.Text.ToString() == Floors[2, 0] ^ floorText.Text.ToString() == Floors[2, 1])
                     {
                         floorVal = Convert.ToInt32(floorText.Text.ToString());
+
                     }
                     else
                     {

@@ -1,0 +1,26 @@
+[
+    {
+        "ID": 3,
+        "Name": "Ben Itilleni",
+        "StudentType": "Athlete",
+        "FloorNum": 5,
+        "RoomNum": 1,
+        "Rent": 1200
+    },
+    {
+        "ID": 1,
+        "Name": "Mike Gold",
+        "StudentType": "Scholarship",
+        "FloorNum": 7,
+        "RoomNum": 1,
+        "Rent": 100
+    },
+    {
+        "ID": 2,
+        "Name": "Larry Mensch",
+        "StudentType": "Scholarship",
+        "FloorNum": 4,
+        "RoomNum": 1,
+        "Rent": 1200
+    }
+]
