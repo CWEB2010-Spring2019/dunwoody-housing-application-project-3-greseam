@@ -29,7 +29,11 @@ namespace Project_Three_GUI
             InitializeComponent();
             
             residents =  LoadCollectionData();
-            HousingGrid.ItemsSource = residents;
+            var orderedResidents = from resident in residents
+                orderby resident.ID ascending
+                select resident;
+
+            HousingGrid.ItemsSource = orderedResidents;
             var studentTypeScholarship = from resident in residents
                 where resident.StudentType == "Scholarship"
                 select resident;
@@ -106,46 +110,20 @@ namespace Project_Three_GUI
                 select resident;
             foreach (var VARIABLE in ResidentOnFL8)
             {
-                NumOfResidentsFl1.Content = "FL8 : " + Convert.ToInt32(ResidentOnFL8.Count());
+                NumOfResidentsFl8.Content = "FL8 : " + Convert.ToInt32(ResidentOnFL8.Count());
             }
         }
 
+       
         private List<Residents> LoadCollectionData()
         {
             string FilePath = @"AddedResident.json";
+   
             List<Residents> addedResidentsList = new List<Residents>();
             addedResidentsList =
                 JsonConvert.DeserializeObject<List<Residents>>(File.ReadAllText(FilePath).Replace("][",","));
             List<Residents> ResidentsDataList = new List<Residents>();
-            ResidentsDataList.Add(new Residents()
-            {
-                ID = 001,
-                Name = "Larry L.",
-                StudentType = "Athlete",
-                FloorNum = 4,
-                RoomNum = 1,
-                Rent = 1200,
-            });
-
-            ResidentsDataList.Add(new Residents()
-            {
-                ID = 002,
-                Name = "Mike Gold",
-                StudentType = "Scholarship",
-                FloorNum = 7,
-                RoomNum = 1,
-                Rent = 100,
-            });
-
-            ResidentsDataList.Add(new Residents()
-            {
-                ID = 003,
-                Name = "Mathew Mannen",
-                StudentType = "WorkStudent",
-                FloorNum = 3,
-                RoomNum = 1,
-                Rent = 1245 - ((14*(20 * 3))/2),
-            });
+            
 
             try
             {
@@ -205,6 +183,7 @@ namespace Project_Three_GUI
             {
                 var FloorSearchQuery = from resident in residents
                     where resident.FloorNum == Convert.ToInt32(SearchTextBox.Text)
+                    orderby resident.RoomNum ascending 
                     select resident;
 
                 HousingGrid.ItemsSource = FloorSearchQuery;

@@ -26,12 +26,12 @@ namespace Project_Three_GUI
         public selection()
         {
             InitializeComponent();
+            
+
+
+
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             frame3.Content = new newResident();
@@ -40,30 +40,57 @@ namespace Project_Three_GUI
         private bool invalidData = false;
         newResident page3 = new newResident();
         JArray canContainer = new JArray();
-        private int floorVal = 0;
+        private int floorVal = 10;
         string[,] Floors =
         {
             {"1","2","3"},
             {"4","5","6"},
             {"7", "8",""}
         };
-        private int roomNumVal = 1;
+        string FilePath = @"AddedResident.json";
+        List<Residents> addedResidentsList = new List<Residents>();
         private void ButtonBase_Enter(object sender, RoutedEventArgs e)
         {
+            addedResidentsList = JsonConvert.DeserializeObject<List<Residents>>(File.ReadAllText(FilePath).Replace("][", ","));
 
             if (StudentFirstName.ToString().Length >= 1 && StudentSurName.ToString().Length >= 1 && floorText.Text.Length == 1 &&
                 IDnum.ToString().Length >= 1 && (ScholarshipBox.IsChecked == true ^ AthleteBox.IsChecked == true ^
                                                  WorkerBox.IsChecked == true ))
             {
                 invalidData = false;
+                int Rent = 0;
+                string type = "";
+                int ID = 0;
+                int roomNumVal = 1;
+                int IDCheckVar = 0;
 
+
+                try
+                {
+
+                    ID = Convert.ToInt16(IDnum.Text);
+                    for (int i = 0; i < addedResidentsList.Count; i++)
+                    {
+                        IDCheckVar++;
+                        if (ID == addedResidentsList[i].ID)
+                        {
+                            IDnum.Text = "ID in use";
+                            invalidData = true;
+                        }
+
+                    }
+                }
+                catch
+                {
+                    IDnum.Text = "Invalid ID";
+                    invalidData = true;
+                }
 
                 if (ScholarshipBox.IsChecked == true)
                 {
-                    if (floorText.Text.ToString() == Floors[2,0] || floorText.Text.ToString() == Floors[2,1])
+                    if (floorText.Text.ToString() == Floors[2,0] ^ floorText.Text.ToString() == Floors[2,1])
                     {
                         floorVal = Convert.ToInt32(floorText.Text.ToString());
-                        roomNumVal++;
                     }
                     else
                     {
@@ -73,10 +100,14 @@ namespace Project_Three_GUI
                 }
                 else if (WorkerBox.IsChecked == true)
                 {
-                    if (floorText.Text.ToString() == Floors[0, 0] || floorText.Text.ToString() == Floors[0, 1] || floorText.Text.ToString() == Floors[0, 2])
+                    if (Hourly.Text.Length <= 0)
+                    {
+                        Hourly.Text = "Invalid Value";
+                        invalidData = true;
+                    }
+                    if ((floorText.Text.ToString() == Floors[0, 0] ^ floorText.Text.ToString() == Floors[0, 1] ^ floorText.Text.ToString() == Floors[0, 2]) && Convert.ToInt32(floorText.Text.ToString()) <= 10 )
                     {
                         floorVal = Convert.ToInt32(floorText.Text.ToString());
-                        roomNumVal++;
 
                     }
                     else
@@ -87,11 +118,9 @@ namespace Project_Three_GUI
                 }
                 else if (AthleteBox.IsChecked == true)
                 {
-                    if (floorText.Text.ToString() == Floors[1, 0] || floorText.Text.ToString() == Floors[1, 1] || floorText.Text.ToString() == Floors[1, 2])
+                    if (floorText.Text.ToString() == Floors[1, 0] ^ floorText.Text.ToString() == Floors[1, 1] ^ floorText.Text.ToString() == Floors[1, 2] && Convert.ToInt32(floorText.Text.ToString()) <= 10)
                     {
                         floorVal = Convert.ToInt32(floorText.Text.ToString());
-                        roomNumVal++;
-
                     }
                     else
                     {
@@ -104,12 +133,24 @@ namespace Project_Three_GUI
                     floorText.Text = "Invalid Floor";
                     invalidData = true;
                 }
-                string FilePath = @"AddedResident.json";
-                int Rent = 0;
-                string type = "";
-                int ID = Convert.ToInt16(IDnum.Text);
+            
                 
                 string fullName = StudentFirstName.Text.ToString() + " " + StudentSurName.Text.ToString();
+                try
+                {
+                var RoomNumOnFL = from resident in addedResidentsList
+                        where resident.FloorNum == floorVal
+                        select resident;
+                    foreach (var VARIABLE in RoomNumOnFL)
+                    {
+                        roomNumVal++;
+                    }
+                }
+                catch 
+                {
+                    roomNumVal = 1;// set to one so it can handle no residents on floor
+                }
+                
                 
                 try
                 {
@@ -143,14 +184,14 @@ namespace Project_Three_GUI
                 }
                 if (invalidData == false)
                 {
-                        TextWriter tsw = new StreamWriter(FilePath, true);
+                    TextWriter tsw = new StreamWriter(FilePath, true);
                    
                     JObject addJObject = new JObject(
                         new JProperty("ID", ID),
                         new JProperty("Name", fullName),
                         new JProperty("StudentType", type),
                         new JProperty("FloorNum", floorVal),
-                        new JProperty("RoomNum", roomNumVal),
+                        new JProperty("RoomNum",roomNumVal),
                         new JProperty("Rent", Rent));
 
 
@@ -268,6 +309,11 @@ namespace Project_Three_GUI
         private void Frame3_Navigated(object sender, NavigationEventArgs e)
         {
 
+        }
+
+        private void Hourly_OnGotMouseCapture(object sender, MouseEventArgs e)
+        {
+            Hourly.Text = "";
         }
     }
 }
