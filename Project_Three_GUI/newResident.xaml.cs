@@ -218,6 +218,7 @@ namespace Project_Three_GUI
 
         private void Search_Clear_OnClick(object sender, RoutedEventArgs e)
         {
+            SearchTextBox.Text = "Search...";
             HousingGrid.ItemsSource = residents;
         }
 

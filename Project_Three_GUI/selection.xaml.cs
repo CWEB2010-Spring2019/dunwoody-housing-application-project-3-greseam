@@ -32,7 +32,6 @@ namespace Project_Three_GUI
         {
 
         }
-
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             frame3.Content = new newResident();
@@ -57,6 +56,7 @@ namespace Project_Three_GUI
                                                  WorkerBox.IsChecked == true ))
             {
                 invalidData = false;
+
 
                 if (ScholarshipBox.IsChecked == true)
                 {
@@ -181,9 +181,15 @@ namespace Project_Three_GUI
                     
                         frame3.Content = new newResident();
                 }
-
-
-
+                else
+                {
+                    AddResidentLabel.Visibility = Visibility.Visible;
+                }
+                
+            }
+            else
+            {
+                AddResidentLabel.Visibility = Visibility.Visible;
             }
         }
 
@@ -257,6 +263,11 @@ namespace Project_Three_GUI
         private void StudentSurName_OnGotMouseCapture(object sender, MouseEventArgs e)
         {
             StudentSurName.Text = "";
+        }
+
+        private void Frame3_Navigated(object sender, NavigationEventArgs e)
+        {
+
         }
     }
 }

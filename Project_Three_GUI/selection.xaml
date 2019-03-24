@@ -34,16 +34,16 @@
         <CheckBox Unchecked="AthleteBox_OnUnchecked" Checked="AthleteBox_OnChecked" Name="AthleteBox" Content="Athlete" HorizontalAlignment="Left" Margin="466,254,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
         <CheckBox Unchecked="WorkerBox_OnUnchecked" Checked="WorkerBox_OnChecked" Name="WorkerBox" Content="Worker" HorizontalAlignment="Left" Margin="339,254,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
         <Label Content="Floor:" HorizontalAlignment="Left" Margin="64,305,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
-        <TextBox Visibility="Hidden" Name="Hourly" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="596,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" TextChanged="TextBox_TextChanged"/>
-        <Button Click="ButtonBase_Enter" Content="Enter" FontSize="20" HorizontalAlignment="Left" Margin="339,355,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" />
+        <TextBox Visibility="Hidden" Name="Hourly" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="596,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" TextChanged="TextBox_TextChanged"/>
+        <Button Name="AddResidentButton" Click="ButtonBase_Enter" Content="Enter" FontSize="20" HorizontalAlignment="Left" Margin="339,355,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" />
         <Button Click="ButtonBase_OnClick" Content="Back" FontSize="20" HorizontalAlignment="Left" Margin="542,355,0,0" VerticalAlignment="Top" Width="89" Height="31" Background="Black" Foreground="White" />
         <Label Content="NEW RESIDENT" HorizontalAlignment="Left" Margin="64,59,0,0" VerticalAlignment="Top" Foreground="#ffac182e" FontSize="20" Width="156"/>
-        <Label  Name="hourlyDescription" Content="Hours per week student will work :" HorizontalAlignment="Left" Margin="279,285,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20" Visibility="Hidden"/>
+        <Label  Name="hourlyDescription" Content="Hours per week student will work :" HorizontalAlignment="Left" Margin="279,280,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20" Visibility="Hidden"/>
         <TextBox GotMouseCapture="StudentFirstName_OnGotMouseCapture" Name="StudentFirstName" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="179,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" TextChanged="TextBox_TextChanged"/>
         <Label Content="First Name :" HorizontalAlignment="Left" Margin="64,154,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
-        <TextBox GotMouseCapture="FloorText_OnGotMouseCapture" Name="floorText" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="141,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
-
-        <Frame Name="frame3" />
+        <TextBox GotMouseCapture="FloorText_OnGotMouseCapture" Name="floorText" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="141,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
+        <Label Visibility="Hidden" Name="AddResidentLabel" Content="Please fill all categories!" HorizontalAlignment="Left" Margin="162,355,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="15" Width="180"/>
+        <Frame Name="frame3" Navigated="Frame3_Navigated"/>
 
 
     </Grid>
