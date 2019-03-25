@@ -18,9 +18,8 @@ using Newtonsoft.Json.Linq;
 
 namespace Project_Three_GUI
 {
-    /// <summary>
-    /// Interaction logic for newResident.xaml
-    /// </summary>
+   //although called new resident, this page's purpose is to display all residents and allow the user to search
+   //when making this page and "selection" page i got the two confused and they ened up switched in titles.
     public partial class newResident : Page
     {
         List<Residents> residents = new List<Residents>();
@@ -31,9 +30,10 @@ namespace Project_Three_GUI
             residents =  LoadCollectionData();
             var orderedResidents = from resident in residents
                 orderby resident.ID ascending
-                select resident;
+                select resident;//orders the residents by id number
 
             HousingGrid.ItemsSource = orderedResidents;
+            //query based on specific data from .json file
             var studentTypeScholarship = from resident in residents
                 where resident.StudentType == "Scholarship"
                 select resident;
@@ -115,20 +115,20 @@ namespace Project_Three_GUI
         }
 
        
-        private List<Residents> LoadCollectionData()
+        private List<Residents> LoadCollectionData() //reads the data from json file and returns it to be displayed in datagrid
         {
             string FilePath = @"AddedResident.json";
    
             List<Residents> addedResidentsList = new List<Residents>();
             addedResidentsList =
                 JsonConvert.DeserializeObject<List<Residents>>(File.ReadAllText(FilePath).Replace("][",","));
+            //the "replace" is important as the way i add to the json file is strange, this replace fixes issues,
+            //DO NOT EDIT JSON FILE OUTSIDE OF PROGRAM//
             List<Residents> ResidentsDataList = new List<Residents>();
             
 
             try
             {
-
-            
                 for (int i = 0; i < addedResidentsList.Count; i++)
                 {
                     ResidentsDataList.Add(new Residents()
@@ -146,7 +146,6 @@ namespace Project_Three_GUI
             {
                
             }
-
 
             return ResidentsDataList;
         }

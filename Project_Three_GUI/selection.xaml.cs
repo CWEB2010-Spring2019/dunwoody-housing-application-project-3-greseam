@@ -26,18 +26,14 @@ namespace Project_Three_GUI
         public selection()
         {
             InitializeComponent();
-            
-
-
-
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            frame3.Content = new newResident();
+            frame3.Content = new newResident();//moves to back to the previous page
         }
 
-        private bool invalidData = false;
+        private bool invalidData = false; //determines if resident information is vaild, if "invalidData" is true the "Enter" button will not move to the next dialog option
         newResident page3 = new newResident();
         JArray canContainer = new JArray();
         private int floorVal = 10;
@@ -47,17 +43,21 @@ namespace Project_Three_GUI
             {"4","5","6"},
             {"7", "8",""}
         };
-        string FilePath = @"AddedResident.json";
+        string FilePath = @"AddedResident.json";// it should be included in project let me know if it is not
         List<Residents> addedResidentsList = new List<Residents>();
         private void ButtonBase_Enter(object sender, RoutedEventArgs e)
         {
             addedResidentsList = JsonConvert.DeserializeObject<List<Residents>>(File.ReadAllText(FilePath).Replace("][", ","));
-
+            //the "replace" is important as the way i add to the json file is strange, this replace fixes issues,
+            //DO NOT EDIT JSON FILE OUTSIDE OF PROGRAM//
+            
+            //runs code only if there is something inside the textboxes for data
             if (StudentFirstName.ToString().Length >= 1 && StudentSurName.ToString().Length >= 1 && floorText.Text.Length == 1 &&
                 IDnum.ToString().Length >= 1 && (ScholarshipBox.IsChecked == true ^ AthleteBox.IsChecked == true ^
                                                  WorkerBox.IsChecked == true ))
             {
-                invalidData = false;
+                invalidData = false;// set "false" incase the value is changed and never changed back
+                //placejolder values, will be set to different values later
                 int Rent = 0;
                 string type = "";
                 int ID = 0;
@@ -65,11 +65,11 @@ namespace Project_Three_GUI
                 int IDCheckVar = 0;
 
 
-                try
+                try//try so it can detect if "Convert" cant be run
                 {
 
                     ID = Convert.ToInt16(IDnum.Text);
-                    if (ID.ToString().Length > 3)
+                    if (ID.ToString().Length > 3)//3 is used to prevent numbers greater in charater length of 3
                     {
                         IDnum.Text = "ID is too long";
                         invalidData = true;
@@ -89,10 +89,10 @@ namespace Project_Three_GUI
                     IDnum.Text = "Invalid ID";
                     invalidData = true;
                 }
-
-                if (ScholarshipBox.IsChecked == true )
+                //following if/else statements check which student type box is checked, and determins if its correct floor to student type 
+                if (ScholarshipBox.IsChecked == true )//start
                 {
-                    if (floorText.Text.ToString() == Floors[2, 0] ^ floorText.Text.ToString() == Floors[2, 1])
+                    if (floorText.Text.ToString() == Floors[2, 0] ^ floorText.Text.ToString() == Floors[2, 1])//bug where if a number is entered for floor it will ignore these but not displa
                     {
                         floorVal = Convert.ToInt32(floorText.Text.ToString());
 
@@ -137,13 +137,13 @@ namespace Project_Three_GUI
                 {
                     floorText.Text = "Invalid Floor";
                     invalidData = true;
-                }
+                }//end 
             
                 
                 string fullName = StudentFirstName.Text.ToString() + " " + StudentSurName.Text.ToString();
                 try
                 {
-                var RoomNumOnFL = from resident in addedResidentsList
+                var RoomNumOnFL = from resident in addedResidentsList //counts number of residents based on floor and adds for each resident to get the next open room
                         where resident.FloorNum == floorVal
                         select resident;
                     foreach (var VARIABLE in RoomNumOnFL)
@@ -157,7 +157,7 @@ namespace Project_Three_GUI
                 }
                 
                 
-                try
+                try //try so that it can handle cases for non workers
                 {
                     int hours = Convert.ToInt32(Hourly.Text);
                     int workingWage = 14 * hours;
@@ -196,7 +196,7 @@ namespace Project_Three_GUI
                         new JProperty("Name", fullName),
                         new JProperty("StudentType", type),
                         new JProperty("FloorNum", floorVal),
-                        new JProperty("RoomNum",roomNumVal),
+                        new JProperty("RoomNum",GenerateRoomNum(roomNumVal,floorVal)),
                         new JProperty("Rent", Rent));
 
 
@@ -211,25 +211,11 @@ namespace Project_Three_GUI
                         tsw.Close();
                     }
 
-                    try
-                    {
-
-
-                    }
-                    catch (Exception exception)
-                    {
-                        Console.WriteLine(exception);
-                        throw;
-                    }
-
-                    //add Rent to JSON file
-                    //return StudentName, id, and type to Json to be saved
-                    
                         frame3.Content = new newResident();
                 }
                 else
                 {
-                    AddResidentLabel.Visibility = Visibility.Visible;
+                    AddResidentLabel.Visibility = Visibility.Visible; //label that specifies to enter all un awnsered in cases where user did not enter info
                 }
                 
             }
@@ -239,8 +225,21 @@ namespace Project_Three_GUI
             }
         }
 
- 
-    private void ScholarshipBox_OnChecked(object sender, RoutedEventArgs e)
+        private int GenerateRoomNum(int room,int floor)
+        {
+            if (room.ToString().Length > 1)
+            {
+                room = Convert.ToInt32(Convert.ToString(floor) + Convert.ToString(room));
+            }
+            else
+            {
+                room = Convert.ToInt32(Convert.ToString(floor) + "0" + Convert.ToString(room));
+            }
+
+            return room;
+        }
+
+        private void ScholarshipBox_OnChecked(object sender, RoutedEventArgs e)
         {
 
             AthleteBox.Visibility = Visibility.Hidden;
@@ -290,7 +289,7 @@ namespace Project_Three_GUI
             hourlyDescription.Visibility = Visibility.Hidden;
         }
 
-
+        //following allows the text to reset when textbox is selected
         private void FloorText_OnGotMouseCapture(object sender, MouseEventArgs e)
         {
             floorText.Text = "";
