@@ -43,7 +43,7 @@
         <Label Content="First Name :" HorizontalAlignment="Left" Margin="64,154,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
         <TextBox GotMouseCapture="FloorText_OnGotMouseCapture" Name="floorText" FontSize="20" FontStyle="Italic" Foreground="Gray" HorizontalAlignment="Left" Height="30" Margin="141,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
         <Label Visibility="Hidden" Name="AddResidentLabel" Content="Please fill all categories!" HorizontalAlignment="Left" Margin="162,355,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="15" Width="180"/>
-        <Frame Name="frame3" Navigated="Frame3_Navigated"/>
+        <Frame Name="frame3"/>
 
 
     </Grid>

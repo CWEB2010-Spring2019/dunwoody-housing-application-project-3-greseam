@@ -52,7 +52,7 @@ namespace Project_Three_GUI
             //DO NOT EDIT JSON FILE OUTSIDE OF PROGRAM//
             
             //runs code only if there is something inside the textboxes for data
-            if (StudentFirstName.ToString().Length >= 1 && StudentSurName.ToString().Length >= 1 && floorText.Text.Length == 1 &&
+            if (StudentFirstName.ToString().Length >= 1 && StudentSurName.ToString().Length >= 1 && floorText.Text.Length >= 1 &&
                 IDnum.ToString().Length >= 1 && (ScholarshipBox.IsChecked == true ^ AthleteBox.IsChecked == true ^
                                                  WorkerBox.IsChecked == true ))
             {
@@ -310,10 +310,7 @@ namespace Project_Three_GUI
             StudentSurName.Text = "";
         }
 
-        private void Frame3_Navigated(object sender, NavigationEventArgs e)
-        {
-
-        }
+        
 
         private void Hourly_OnGotMouseCapture(object sender, MouseEventArgs e)
         {

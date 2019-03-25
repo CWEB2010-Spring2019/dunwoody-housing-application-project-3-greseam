@@ -33,6 +33,7 @@ namespace Project_Three_GUI
                 select resident;//orders the residents by id number
 
             HousingGrid.ItemsSource = orderedResidents;
+
             //query based on specific data from .json file
             var studentTypeScholarship = from resident in residents
                 where resident.StudentType == "Scholarship"
